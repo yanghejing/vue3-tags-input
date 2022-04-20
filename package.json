@@ -1,6 +1,6 @@
 {
   "name": "vue3-tags-input",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Chinh Pham Duc",
     "email": "chinh12hy@gmail.com",
@@ -10,7 +10,7 @@
   "homepage": "https://vue3-tags-input.netlify.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chinh12hy/vue3-tags-inputs"
+    "url": "https://github.com/chinh12hy/vue3-tags-input"
   },
   "bugs": {
     "url": "https://github.com/chinh12hy/vue3-tags-input/issues"
