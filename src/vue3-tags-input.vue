@@ -1,18 +1,18 @@
 <template>
   <div @click="focusNewTag()"
        :class="{
-          'v3it--focus': isInputActive,
-          'v3it--error': isError
+          'v3ti--focus': isInputActive,
+          'v3ti--error': isError
         }"
-       class="v3it">
-    <div class="v3it-content">
+       class="v3ti">
+    <div class="v3ti-content">
         <span v-for="(tag, index) in innerTags"
               :key="index"
-              class="v3it-tag">
+              class="v3ti-tag">
           <slot v-if="$slots.item"
                 name="item" v-bind="{ name: tag, index }"></slot>
           <span v-else> {{ tag }} </span>
-          <a v-if="!readOnly" @click.prevent.stop="remove(index)" class="v3it-remove-tag"></a>
+          <a v-if="!readOnly" @click.prevent.stop="remove(index)" class="v3ti-remove-tag"></a>
         </span>
       <input
           ref="inputTag"
@@ -23,7 +23,7 @@
           @blur="handleInputBlur"
           @focus="handleInputFocus"
           @input="makeItNormal"
-          class="v3it-new-tag"/>
+          class="v3ti-new-tag"/>
     </div>
   </div>
 </template>
@@ -122,7 +122,7 @@ export default {
     },
     newTag() {
       if(this.newTag.length > 50){
-        this.$refs.inputTag.className = 'v3it-new-tag v3it-new-tag--error';
+        this.$refs.inputTag.className = 'v3ti-new-tag v3ti-new-tag--error';
         this.$refs.inputTag.style.textDecoration="underline";
       }
     }
@@ -130,17 +130,17 @@ export default {
   methods: {
     makeItNormal(event) {
       this.$emit('update:modelValue', event.target.value)
-      this.$refs.inputTag.className = 'v3it-new-tag';
+      this.$refs.inputTag.className = 'v3ti-new-tag';
       this.$refs.inputTag.style.textDecoration="none";
     },
     resetData() {
       this.innerTags = []
     },
     focusNewTag() {
-      if (this.readOnly || !this.$el.querySelector(".v3it-new-tag")) {
+      if (this.readOnly || !this.$el.querySelector(".v3ti-new-tag")) {
         return;
       }
-      this.$el.querySelector(".v3it-new-tag").focus();
+      this.$el.querySelector(".v3ti-new-tag").focus();
     },
     handleInputFocus(event) {
       this.isInputActive = true;
@@ -186,7 +186,7 @@ export default {
       }
     },
     makeItError(isDuplicatedOrMaxLength) {
-      this.$refs.inputTag.className = 'v3it-new-tag v3it-new-tag--error';
+      this.$refs.inputTag.className = 'v3ti-new-tag v3ti-new-tag--error';
       this.$refs.inputTag.style.textDecoration="underline";
       this.$emit('on-error', isDuplicatedOrMaxLength);
     },
@@ -231,7 +231,7 @@ export default {
 </script>
 
 <style lang="scss">
-.v3it {
+.v3ti {
   border-radius: 5px;
   min-height: 32px;
   line-height: 1.4 !important;
@@ -251,12 +251,12 @@ export default {
   &--error{
     border-color: #F56C6C;
   }
-  .v3it-content {
+  .v3ti-content {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
-  .v3it-tag {
+  .v3ti-tag {
     display: flex;
     font-weight: 400;
     margin: 3px;
@@ -266,7 +266,7 @@ export default {
     height: 27px;
     border-radius: 5px;
     align-items: center;
-    .v3it-remove-tag {
+    .v3ti-remove-tag {
       color: #ffffff;
       transition: opacity .3s ease;
       opacity: .5;
@@ -280,7 +280,7 @@ export default {
       }
     }
   }
-  .v3it-new-tag {
+  .v3ti-new-tag {
     background: transparent;
     border: 0;
     font-weight: 400;
