@@ -10,10 +10,10 @@
   "homepage": "https://vue3-tags-input.netlify.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chinh12hy/vue3-tags-input"
+    "url": "https://github.com/yanghejing/vue3-tags-input"
   },
   "bugs": {
-    "url": "https://github.com/chinh12hy/vue3-tags-input/issues"
+    "url": "https://github.com/yanghejing/vue3-tags-input/issues"
   },
   "license": "MIT",
   "keywords": [
