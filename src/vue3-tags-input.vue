@@ -76,6 +76,10 @@ export default {
       type: Number,
       default: -1
     },
+    tagLength: {
+      type: Number,
+      default: -1
+    },
     allowDuplicates: {
       type: Boolean,
       default: false
@@ -121,7 +125,7 @@ export default {
       }
     },
     newTag() {
-      if(this.newTag.length > 50){
+      if((this.tagLength !== -1 || this.newTag.length > this.tagLength)){
         this.$refs.inputTag.className = 'v3ti-new-tag v3ti-new-tag--error';
         this.$refs.inputTag.style.textDecoration="underline";
       }
@@ -165,7 +169,7 @@ export default {
       if (
           this.newTag &&
           (this.allowDuplicates || this.innerTags.indexOf(this.newTag) === -1) &&
-          this.validateIfNeeded(this.newTag) && this.newTag.length <= 50
+          this.validateIfNeeded(this.newTag) && (this.tagLength === -1 || this.newTag.length <= this.tagLength)
       ) {
         this.innerTags.push(this.newTag);
         this.newTag = "";
@@ -174,7 +178,7 @@ export default {
         e && e.preventDefault();
       } else {
         if(this.validateIfNeeded(this.newTag)){
-          if(this.newTag && this.newTag.length <= 50) {
+          if(this.newTag && (this.tagLength === -1 || this.newTag.length <= this.tagLength)) {
             this.makeItError(true);
           }else {
             this.makeItError('maxLength');
